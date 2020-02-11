@@ -2,8 +2,9 @@
   "name": "alfred-morningcall",
   "version": "1.0.0",
   "description": "",
-  "main": "buzzerStatus.js",
+  "main": "morningCall.js",
   "scripts": {
+    "start": "node morningCall.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
