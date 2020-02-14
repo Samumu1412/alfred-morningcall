@@ -10,7 +10,7 @@ db.once('open', function () {
     console.log("buzzerDB connection success...");
 });
 //建立連線
-mongoose.connect(`${process.env.BUZZER_MONGODB_URL}`, { useNewUrlParser: true }).then(() => console.log('DB Connected!'))
+mongoose.connect(`${process.env.MONGODB_URL}`, { useNewUrlParser: true }).then(() => console.log('DB Connected!'))
     .catch(err => {
         console.log(err);
     });

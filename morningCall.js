@@ -4,17 +4,21 @@ let schedule = require('node-schedule');
 // Dependencies
 const buzzerStatus = require('./buzzerStatus');
 const targetChannel = 'buzzer_alfred';
-const versionText = 'ver 0.1.1';
+const versionText = 'ver 1.0';
+
+const params = {
+    icon_emoji: ':morningcall_production:'
+}
 
 const slackBot =
     new slackAPI({
         token: `${process.env.SLACK_TOKEN}`,
-        name: 'ALFRED_Bot_MorningCall'
+        name: 'ALFRED_Bot_MorningCall (Production)'
     })
 
 process.env.TZ = 'Asia/Shanghai'
-const discordBotMorningCallText = 'Discord Bot ' + versionText + ' starts working at ';
-const telegramBotMorningCallText = 'Telegram Bot ' + versionText + ' starts working at ';
+const discordBotMorningCallText = '【Discord Bot ' + versionText + '】 started at ';
+const telegramBotMorningCallText = '【Telegram Bot ' + versionText + '】 started at ';
 
 
 let discordBotMorningCallSchedule = new schedule.scheduleJob('*/3 * * * * * ', async function () {
@@ -84,7 +88,7 @@ async function getTelegramBuzzerSendOrNotString() {
 }
 
 function sendMessageToSlack(message, time) {
-    slackBot.postMessageToChannel(targetChannel, message + time);
+    slackBot.postMessageToChannel(targetChannel, message + time, params);
     console.log(message);
 }
 
